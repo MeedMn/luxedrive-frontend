@@ -1,0 +1,89 @@
+<div class="flex justify-center items-center h-screen bg-[#1a1c20]">
+  <div
+    class="w-[600px] bg-white p-8 rounded-lg shadow-md flex flex-col justify-center items-center"
+  >
+    <div class="mb-6 text-[#222732] text-3xl font-black">Register</div>
+    <div class="mb-6 text-[#222732] text-[14.5px] font-normal">
+      Create a new account today.
+    </div>
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="register()"
+      class="w-full max-w-md"
+    >
+      <div class="mb-4">
+        <mat-form-field class="w-full">
+          <mat-label>Full Name*</mat-label>
+          <input
+            type="text"
+            name="fullName"
+            matInput
+            placeholder="Enter your Full Name"
+            formControlName="fullName"
+          />
+        </mat-form-field>
+      </div>
+      <div class="mb-4">
+        <mat-form-field class="w-full">
+          <mat-label>Email*</mat-label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            matInput
+            placeholder="Enter your email"
+            formControlName="email"
+          />
+        </mat-form-field>
+      </div>
+      <div class="mb-4">
+        <mat-form-field class="w-full">
+          <mat-label>Phone*</mat-label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            matInput
+            placeholder="Enter your phone number"
+            formControlName="phone"
+          />
+        </mat-form-field>
+      </div>
+      <div class="mb-4">
+        <mat-form-field class="w-full">
+          <mat-label>Address*</mat-label>
+          <input
+            type="text"
+            name="address"
+            matInput
+            placeholder="Enter your Address"
+            formControlName="address"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="mb-6">
+        <mat-form-field class="w-full">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="Enter your password"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-[#ff4605] text-white text-base font-semibold rounded-lg py-2"
+      >
+        Register
+      </button>
+    </form>
+    <p class="text-[#2f3b48] text-base mt-4">
+      Have an account?
+      <a href="/login" class="text-[#ff4605] underline">Login</a>
+    </p>
+  </div>
+</div>

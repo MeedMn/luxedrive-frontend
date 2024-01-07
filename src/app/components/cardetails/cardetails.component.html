@@ -1,0 +1,110 @@
+<div class="container mx-auto p-8 mt-12">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="lg:col-span-1">
+      <div class="h-[532px]">
+        <img
+          [src]="selectedCar?.image"
+          alt="Car Image"
+          class="w-[796px] h-full object-contain rounded-lg"
+        />
+      </div>
+      <div>
+        <div class="font-bold text-[#222732] mb-2">Description</div>
+        <p class="text-[#a7a8a8] text-sm">
+          {{ selectedCar?.description }}
+        </p>
+      </div>
+    </div>
+    <div class="lg:col-span-1">
+      <div class="p-4">
+        <div class="font-black text-[#222732] text-2xl mb-4">
+          {{ selectedCar?.title }}
+        </div>
+        <div class="mb-8">
+          <div class="font-extrabold text-[#ff4605] text-2xl">
+            {{ selectedCar?.price }} DH
+          </div>
+        </div>
+        <div class="mb-6 bg-[#f2f5fb] rounded-lg p-4">
+          <div class="flex flex-col">
+            <div class="flex items-center mb-2">
+              <div class="text-black font-bold ml-5 mr-2">Make :</div>
+              <div class="text-[#a7a8a8] text-sm">{{ selectedCar?.make }}</div>
+            </div>
+            <div class="flex items-center mb-2">
+              <div class="text-black font-bold ml-5 mr-2">Model :</div>
+              <div class="text-[#a7a8a8] text-sm">{{ selectedCar?.model }}</div>
+            </div>
+            <div class="flex items-center mb-2">
+              <div class="text-black font-bold ml-5 mr-2">Year :</div>
+              <div class="text-[#a7a8a8] text-sm">{{ selectedCar?.year }}</div>
+            </div>
+            <div class="flex items-center mb-2">
+              <div class="text-black font-bold ml-5 mr-2">Fuel Type :</div>
+              <div class="text-[#a7a8a8] text-sm">{{ selectedCar?.fuel }}</div>
+            </div>
+            <div class="flex items-center mb-2">
+              <div class="text-black font-bold ml-5 mr-2">
+                Registration Number :
+              </div>
+              <div class="text-[#a7a8a8] text-sm">
+                {{ selectedCar?.registrationNumber }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="relative bg-[#f2f5fb] rounded-lg p-4">
+            @if(selectedCar?.status !== "RENTED") {
+            <div class="font-bold text-[#222732] mb-2">Rent Car</div>
+            <form [formGroup]="rentForm" (ngSubmit)="onSubmit()">
+              <div class="mb-4">
+                <label for="startDate" class="text-[#a7a8a8] text-sm block"
+                  >Start Date:</label
+                >
+                <input
+                  type="date"
+                  id="startDate"
+                  formControlName="startDate"
+                  class="w-full border rounded p-2"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="endDate" class="text-[#a7a8a8] text-sm block"
+                  >End Date:</label
+                >
+                <input
+                  type="date"
+                  id="endDate"
+                  formControlName="endDate"
+                  class="w-full border rounded p-2"
+                />
+              </div>
+              <button
+                type="submit"
+                class="bg-[#ff4605] text-white py-2 px-4 rounded-md"
+              >
+                Rent Now
+              </button>
+            </form>
+            }@else {
+            <div class="font-bold text-[#222732] mb-2 text-center">
+              RENTED ALREADY
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mx-auto p-8 mt-4">
+  <div class="text-black font-bold text-xl">Related Cars</div>
+  <div class="lg:grid lg:grid-cols-4 lg:gap-8 mt-3">
+    @for (car of cars; track $index) {
+    <div class="mt-8 lg:mt-0 lg:space-y-0 lg:grid lg:gap-8">
+      <app-card size="Small" [car]="car" class="mb-4"></app-card>
+    </div>
+    }
+  </div>
+</div>

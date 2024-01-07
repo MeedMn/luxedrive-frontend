@@ -1,0 +1,25 @@
+<div class="flex h-full">
+  @if(displaySidebar){
+  <div class="w-72">
+    <app-sidebar></app-sidebar>
+  </div>
+  }
+  <div
+    [ngClass]="{
+      'flex-grow': displaySidebar,
+      'p-4': displaySidebar,
+      'p-0': !displaySidebar
+    }"
+  >
+    <div
+      [ngClass]="{
+        'bg-white': displaySidebar,
+        'p-4': displaySidebar,
+        'p-0': !displaySidebar,
+        'shadow rounded': displaySidebar
+      }"
+    >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

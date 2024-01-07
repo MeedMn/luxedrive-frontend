@@ -1,0 +1,159 @@
+<div class="rounded-lg border border-gray-200 shadow-md m-5">
+  <div
+    class="flex flex-row justify-between items-center bg-orange-500 text-white p-4 rounded-t-lg"
+  >
+    <div class="text-2xl font-bold">Rentals</div>
+  </div>
+
+  <div class="overflow-x-auto h-[804px] overflow-y-scroll">
+    <table
+      class="w-full border-collapse bg-white text-left text-sm text-gray-500"
+    >
+      <thead class="bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900">Id</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            Start Date
+          </th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            End Date
+          </th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            Customer
+          </th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900">Car</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            Total Cost
+          </th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900">
+            Status
+          </th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+        @for (rental of rentals; track $index) {
+        <tr class="hover:bg-gray-50">
+          <td class="px-6 py-4">{{ rental.id }}</td>
+          <td class="px-6 py-4">{{ rental.startDate }}</td>
+          <td class="px-6 py-4">{{ rental.endDate }}</td>
+          <td class="px-6 py-4">{{ rental.customer?.fullName }}</td>
+          <td class="px-6 py-4">{{ rental.car?.title }}</td>
+          <td class="px-6 py-4">{{ rental.totalCost }}</td>
+          <td class="px-6 py-4">
+            @if(rental.status === "PENDING"){
+            <span
+              class="inline-flex items-center gap-1 rounded-full bg-yellow-50 px-2 py-1 text-xs font-semibold text-yellow-600"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-yellow-600"></span>
+              PENDING
+            </span>
+            }@else if (rental.status === "ACTIVE") {
+            <span
+              class="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-1 text-xs font-semibold text-green-600"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-green-600"></span>
+              ACTIVE
+            </span>
+            }@else {
+            <span
+              class="inline-flex items-center gap-1 rounded-full bg-red-50 px-2 py-1 text-xs font-semibold text-red-600"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-red-600"></span>
+              {{ rental.status }}
+            </span>
+            }
+          </td>
+          <td class="px-6 py-4">
+            <div class="flex justify-end gap-4">
+              @if(rental.status === "PENDING"){
+              <button
+                x-data="{ tooltip: 'Active' }"
+                (click)="activate(rental.id)"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="#2ed600"
+                  stroke-width="1.5"
+                  class="h-6 w-6"
+                  x-tooltip="tooltip"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M3 12L9 18L21 6"
+                      stroke="#37ff00"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </g>
+                </svg>
+              </button>
+              <button
+                x-data="{ tooltip: 'Cancel' }"
+                (click)="cancel(rental.id)"
+              >
+                <svg
+                  viewBox="0 0 512 512"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  fill="#000000"
+                  class="h-6 w-6"
+                  x-tooltip="tooltip"
+                  stroke-width="1.5"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <title>cancel</title>
+                    <g
+                      id="Page-1"
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                    >
+                      <g
+                        id="work-case"
+                        fill="#ff0000"
+                        transform="translate(91.520000, 91.520000)"
+                      >
+                        <polygon
+                          id="Close"
+                          points="328.96 30.2933333 298.666667 1.42108547e-14 164.48 134.4 30.2933333 1.42108547e-14 1.42108547e-14 30.2933333 134.4 164.48 1.42108547e-14 298.666667 30.2933333 328.96 164.48 194.56 298.666667 328.96 328.96 298.666667 194.56 164.48"
+                        ></polygon>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </button>
+              }@else if(rental.status === "ACTIVE"){
+              <button
+                x-data="{ tooltip: 'Active' }"
+                (click)="complete(rental.id)"
+                class="text-white bg-gray-900 p-2 rounded-lg"
+              >
+                Completed
+              </button>
+              }
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

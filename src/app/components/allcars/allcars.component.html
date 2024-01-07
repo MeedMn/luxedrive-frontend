@@ -1,0 +1,134 @@
+<div class="relative mt-16 py-5 px-10">
+  <div class="flex items-center">
+    <div>
+      <p class="font-normal text-[16px]">
+        <span class="text-black">Home</span>
+      </p>
+    </div>
+    <div class="mx-3">
+      <p class="font-normal text-[16px]">
+        <span class="text-black">-</span>
+      </p>
+    </div>
+    <div>
+      <p class="font-normal text-[16px]">
+        <span class="text-orange-600">All Cars</span>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-[#f2f5fb] border-b border-solid border-blue-200">
+  <div class="flex flex-wrap gap-0 lg:gap-32 justify-center p-4">
+    <div class="relative flex items-center">
+      <mat-form-field appearance="fill">
+        <mat-label>Make</mat-label>
+        <mat-select class="w-40">
+          <mat-option value="toyota">Toyota</mat-option>
+          <mat-option value="honda">Honda</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="relative flex items-center">
+      <mat-form-field appearance="fill">
+        <mat-label>Model</mat-label>
+        <mat-select class="w-40">
+          <mat-option value="sedan">Sedan</mat-option>
+          <mat-option value="suv">SUV</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="relative flex items-center">
+      <mat-form-field appearance="fill">
+        <mat-label>Fuel Type</mat-label>
+        <mat-select class="w-40">
+          <mat-option value="diesel">Diesel</mat-option>
+          <mat-option value="electric">Electric</mat-option>
+          <mat-option value="hybrid">Hybrid</mat-option>
+          <mat-option value="petrol">Petrol</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="relative flex items-center">
+      <mat-form-field appearance="fill" class="w-48">
+        <mat-label>Min Price</mat-label>
+        <input
+          matInput
+          placeholder="Enter Min Price"
+          type="number"
+          (input)="onMinPrice($event)"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="w-48">
+        <mat-label>Max Price</mat-label>
+        <input
+          matInput
+          placeholder="Enter Max Price"
+          type="number"
+          (input)="onMaxPrice($event)"
+        />
+      </mat-form-field>
+    </div>
+    <div class="relative flex items-center">
+      <mat-form-field appearance="fill" class="w-48">
+        <mat-label>Search</mat-label>
+        <input
+          matInput
+          placeholder="Enter a keyword"
+          type="text"
+          (input)="onSearch($event)"
+        />
+      </mat-form-field>
+      <button mat-icon-button class="ml-2 mb-2">
+        <mat-icon class="text-black">search</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="flex flex-row justify-end p-4 bg-white">
+  <div class="flex items-center space-x-4">
+    <button mat-icon-button (click)="showCardRow()">
+      <mat-icon
+        class="text-2xl"
+        [class.text-black]="!isRowShow"
+        [class.text-[#ff4605]]="isRowShow"
+        >view_headline</mat-icon
+      >
+    </button>
+
+    <button mat-icon-button (click)="showCard()">
+      <mat-icon
+        class="text-2xl"
+        [class.text-black]="isRowShow"
+        [class.text-[#ff4605]]="!isRowShow"
+        >view_module</mat-icon
+      >
+    </button>
+  </div>
+</div>
+@if(isRowShow){
+<div class="flex flex-col justify-center items-stretch bg-gray-400">
+  @for (car of filteredPaginationCards; track $index) {
+  <app-row-card [car]="car"></app-row-card>
+  }
+</div>
+}@else {
+<div class="container mx-auto px-4 py-10 pb-36">
+  <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+    @for (car of filteredPaginationCards; track $index) {
+    <div class="mt-8 lg:mt-0 lg:space-y-0 lg:grid lg:gap-8">
+      <app-card size="Small" [car]="car" class="mb-4"></app-card>
+    </div>
+    }
+  </div>
+</div>
+}
+<mat-paginator
+  [length]="cars.length"
+  [pageSize]="pageSize"
+  hidePageSize
+  showFirstLastButtons
+  (page)="pageEvent($event)"
+></mat-paginator>

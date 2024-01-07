@@ -1,0 +1,86 @@
+@if(size=='Big'){
+<div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg h-[677px]">
+  <img
+    [src]="car?.image"
+    alt="Car Image"
+    class="w-full h-[450px] lg:h-[513px] object-cover"
+  />
+  <div class="p-5">
+    <h2 class="font-normal text-white text-[21.3px]">
+      {{ car?.title }}
+    </h2>
+    <div class="flex items-center justify-center my-6">
+      <hr class="w-[609px] h-px" />
+    </div>
+    <div class="flex flex-col lg:flex-row justify-between mt-7">
+      <div class="lg:w-[50%] relative">
+        <div
+          class="w-[63px] h-[34px] bg-[#ff4605] rounded-[5px] flex flex-row justify-center items-center"
+        >
+          <div
+            class="font-medium text-white text-[17px] tracking-[0] leading-[34px]"
+          >
+            {{ car?.year }}
+          </div>
+        </div>
+        <div
+          class="absolute w-[82px] h-[28px] top-[2px] left-[83px] font-medium text-[#99a1b2] text-[16.7px] tracking-[0] leading-[28px] whitespace-nowrap"
+        >
+          {{ car?.registrationNumber }}
+        </div>
+        <div
+          class="absolute w-[46px] h-[28px] top-[2px] left-[185px] font-medium text-[#99a1b2] text-[16.5px] tracking-[0] leading-[28px] whitespace-nowrap"
+        >
+          {{ car?.fuel }}
+        </div>
+      </div>
+      <div
+        class="lg:w-[50%] [font-family:'Inter-ExtraBold',Helvetica] font-extrabold text-white text-[24.7px] text-right tracking-[0] leading-[35px] whitespace-nowrap"
+      >
+        {{ car?.price }} DH
+      </div>
+    </div>
+  </div>
+</div>
+}@else {
+<div
+  class="bg-gray-900 rounded-lg overflow-hidden shadow-lg h-[323px] cursor-pointer"
+  (click)="navigateToCardDetails(car?.id)"
+>
+  <img [src]="car?.image" alt="Car Image" class="object-cover w-full h-40" />
+  <div class="p-8">
+    <h3 class="text-white mb-4 font-normal text-[16.3px]">
+      {{ car?.title }}
+    </h3>
+    <div class="flex flex-col gap-2">
+      <div
+        class="lg:w-[50%] [font-family:'Inter-ExtraBold',Helvetica] font-extrabold text-white text-[17.3px]"
+      >
+        {{ car?.price }} DH
+      </div>
+      <div class="flex items-center justify-center">
+        <hr class="w-[284px] h-px" />
+      </div>
+      <div class="flex flex-row gap-10">
+        <div
+          class="w-[63px] h-[34px] bg-[#ff4605] rounded-[5px] flex flex-row justify-center items-center"
+        >
+          <div class="font-medium text-white text-[14px]">{{ car?.year }}</div>
+        </div>
+        @if(car?.status === "RENTED"){
+        <div
+          class="w-[63px] h-[34px] bg-[#ff2e2e] rounded-[5px] flex flex-row justify-center items-center"
+        >
+          <div class="font-medium text-white text-[14px]">RENTED</div>
+        </div>
+        }
+        <div
+          class="h-[34px] font-medium text-[#99a1b2] text-[15.5px] flex flex-row justify-center items-center"
+        >
+          {{ car?.fuel }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}

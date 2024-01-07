@@ -1,0 +1,146 @@
+<div
+  class="flex flex-col items-center w-full max-w-sm mx-auto h-full overflow-hidden text-white bg-gray-800 shadow-lg rounded-r-3xl"
+>
+  <mat-toolbar
+    class="w-full"
+    [ngStyle]="{ 'background-color': 'transparent', 'margin-bottom': '150px' }"
+  >
+    <span class="text-2xl font-bold mx-auto">
+      <span class="text-orange-500">Luxe</span
+      ><span class="text-white">Drive</span>
+    </span>
+  </mat-toolbar>
+
+  <div
+    class="w-full px-4 mt-4 flex flex-col items-center justify-between bg-gray-800"
+  >
+    <mat-list
+      class="w-full"
+      [ngStyle]="{
+        display: 'flex',
+        'flex-direction': 'column',
+        gap: '50px',
+      }"
+    >
+      <mat-list-item
+        class="nav-link focus:bg-orange-500"
+        [routerLink]="['/admin/dashboard']"
+        [ngStyle]="{ 'border-radius': '20px' }"
+        routerLinkActive="active"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <div style="display: flex; align-items: center">
+          <mat-icon mat-list-icon class="text-white">dashboard</mat-icon>
+          <span mat-line class="ml-10 -mb-1 text-sm font-medium text-white"
+            >Dashboard
+          </span>
+        </div>
+      </mat-list-item>
+      @if(!isEmployeeRole()){
+      <mat-list-item
+        class="nav-link focus:bg-orange-500"
+        [ngStyle]="{ 'border-radius': '20px' }"
+        [routerLink]="['/admin/employees']"
+        routerLinkActive="active"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <div style="display: flex; align-items: center">
+          <mat-icon mat-list-icon class="text-white">people</mat-icon>
+          <span mat-line class="ml-10 -mb-1 text-sm font-medium text-white"
+            >Employees</span
+          >
+        </div>
+      </mat-list-item>
+      }@else {
+      <mat-list-item
+        class="nav-link focus:bg-orange-500"
+        [ngStyle]="{ 'border-radius': '20px' }"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <div style="display: flex; align-items: center">
+          <mat-icon mat-list-icon class="text-white">lock</mat-icon>
+          <span mat-line class="ml-10 -mb-1 text-sm font-medium text-white"
+            >Access Denied</span
+          >
+        </div>
+      </mat-list-item>
+      }
+      <mat-list-item
+        class="nav-link focus:bg-orange-500"
+        [ngStyle]="{ 'border-radius': '20px' }"
+        [routerLink]="['/admin/customers']"
+        routerLinkActive="active"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <div style="display: flex; align-items: center">
+          <mat-icon mat-list-icon class="text-white">person</mat-icon>
+          <span mat-line class="ml-10 -mb-1 text-sm font-medium text-white"
+            >Customers</span
+          >
+        </div>
+      </mat-list-item>
+
+      <mat-list-item
+        class="nav-link focus:bg-orange-500"
+        [ngStyle]="{ 'border-radius': '20px' }"
+        [routerLink]="['/admin/cars']"
+        routerLinkActive="active"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <div style="display: flex; align-items: center">
+          <mat-icon mat-list-icon class="text-white">directions_car</mat-icon>
+          <span mat-line class="ml-10 -mb-1 text-sm font-medium text-white"
+            >Cars</span
+          >
+        </div>
+      </mat-list-item>
+      <mat-list-item
+        class="nav-link focus:bg-orange-500"
+        [ngStyle]="{ 'border-radius': '20px' }"
+        [routerLink]="['/admin/rentals']"
+        routerLinkActive="active"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <div style="display: flex; align-items: center">
+          <mat-icon mat-list-icon class="text-white">directions_car</mat-icon>
+          <span mat-line class="ml-10 -mb-1 text-sm font-medium text-white"
+            >Rentals</span
+          >
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <button
+    mat-button
+    class="flex items-center justify-center w-full h-16 mt-auto bg-indigo-500 hover:bg-indigo-600"
+    (click)="Logout()"
+  >
+    <mat-icon class="text-white">account_circle</mat-icon>
+    <span class="ml-2 text-sm font-medium text-white">Logout</span>
+  </button>
+</div>

@@ -1,0 +1,135 @@
+<div class="p-6 bg-white rounded-lg shadow-lg md:w-2/3 lg:w-full">
+  <h1 class="text-3xl font-bold mb-6 text-blue-600">Cars</h1>
+
+  <div class="mb-6">
+    <label for="image" class="block text-sm font-medium text-gray-700"
+      >Image URL</label
+    >
+    <input
+      id="image"
+      name="image"
+      type="text"
+      class="mt-1 p-2 w-full border border-solid border-black rounded-md focus:outline-none focus:ring focus:border-blue-300"
+      [(ngModel)]="data.car.image"
+    />
+  </div>
+  <div class="mb-6">
+    <label for="title" class="block text-sm font-medium text-gray-700"
+      >Title</label
+    >
+    <input
+      id="title"
+      name="title"
+      type="text"
+      class="mt-1 p-2 w-full border border-solid border-black rounded-md focus:outline-none focus:ring focus:border-blue-300"
+      [(ngModel)]="data.car.title"
+    />
+  </div>
+  <div class="mb-6">
+    <label for="make" class="block text-sm font-medium text-gray-700"
+      >Make</label
+    >
+    <input
+      id="make"
+      name="make"
+      type="text"
+      class="mt-1 p-2 w-full border border-solid border-black rounded-md focus:outline-none focus:ring focus:border-blue-300"
+      [(ngModel)]="data.car.make"
+    />
+  </div>
+
+  <div class="mb-6">
+    <label for="fuel" class="block text-sm font-medium text-gray-700"
+      >Fuel</label
+    >
+    <input
+      id="fuel"
+      name="fuel"
+      type="text"
+      class="mt-1 p-2 w-full border border-solid border-black rounded-md focus:outline-none focus:ring focus:border-blue-300"
+      [(ngModel)]="data.car.fuel"
+    />
+  </div>
+
+  <div class="mb-6">
+    <label for="model" class="block text-sm font-medium text-gray-700"
+      >Model</label
+    >
+    <input
+      id="model"
+      name="model"
+      type="text"
+      class="mt-1 p-2 w-full border border-solid border-black rounded-md focus:outline-none focus:ring focus:border-blue-300"
+      [(ngModel)]="data.car.model"
+    />
+  </div>
+
+  <div class="mb-6">
+    <label for="year" class="block text-sm font-medium text-gray-700"
+      >Year</label
+    >
+    <input
+      id="year"
+      name="year"
+      type="number"
+      class="mt-1 p-2 w-full border border-solid border-black rounded-md focus:outline-none focus:ring focus:border-blue-300"
+      [(ngModel)]="data.car.year"
+    />
+  </div>
+
+  <div class="mb-6">
+    <label
+      for="registrationNumber"
+      class="block text-sm font-medium text-gray-700"
+      >Registration Number</label
+    >
+    <input
+      id="registrationNumber"
+      name="registrationNumber"
+      type="text"
+      class="mt-1 p-2 w-full border border-solid border-black rounded-md focus:outline-none focus:ring focus:border-blue-300"
+      [(ngModel)]="data.car.registrationNumber"
+    />
+  </div>
+  <div class="mb-6">
+    <label for="price" class="block text-sm font-medium text-gray-700"
+      >Price Per Day</label
+    >
+    <input
+      id="price"
+      name="price"
+      type="number"
+      class="mt-1 p-2 w-full border border-solid border-black rounded-md focus:outline-none focus:ring focus:border-blue-300"
+      [(ngModel)]="data.car.price"
+    />
+  </div>
+  <div class="mb-6">
+    <label for="description" class="block text-sm font-medium text-gray-700"
+      >Description</label
+    >
+    <textarea
+      id="description"
+      name="description"
+      type="text"
+      class="mt-1 p-2 w-full border border-solid border-black rounded-md focus:outline-none focus:ring focus:border-blue-300"
+      [(ngModel)]="data.car.description"
+    ></textarea>
+  </div>
+  <div class="flex justify-end">
+    <button
+      mat-button
+      class="mr-2 bg-gray-400 text-white hover:bg-gray-400"
+      (click)="onNoClick()"
+    >
+      Cancel
+    </button>
+    <button
+      mat-button
+      color="primary"
+      class="bg-blue-600 text-white hover:bg-blue-100"
+      (click)="onSaveClick()"
+    >
+      Save
+    </button>
+  </div>
+</div>

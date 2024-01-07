@@ -1,0 +1,21 @@
+<div class="container mx-auto px-4 py-10 pb-36">
+  <div class="mb-8">
+    <p class="text-4xl font-black text-gray-900">Featured Listings</p>
+  </div>
+
+  <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+    <app-card size="Big" [car]="cars[0]"></app-card>
+    <div
+      class="mt-8 lg:mt-0 space-y-8 lg:space-y-0 lg:grid lg:grid-rows-2 lg:gap-8"
+    >
+      <div class="grid grid-cols-2 gap-8">
+        <app-card size="Small" [car]="cars[1]"></app-card>
+        <app-card size="Small" [car]="cars[2]"></app-card>
+      </div>
+      <div class="grid grid-cols-2 gap-8">
+        <app-card size="Small" [car]="cars[3]"></app-card>
+        <app-card size="Small" [car]="cars[4]"></app-card>
+      </div>
+    </div>
+  </div>
+</div>

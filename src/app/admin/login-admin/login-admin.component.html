@@ -1,0 +1,47 @@
+<div
+  class="flex justify-center items-center h-screen w-screen bg-gradient-to-tr from-orange-600 to-orange-400"
+>
+  <div
+    class="w-[600px] bg-white p-8 rounded-lg shadow-md flex flex-col justify-center items-center"
+  >
+    <p class="font-black text-[#222732] text-3xl mb-4">
+      Log in to your account
+    </p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="w-full max-w-md">
+      <div class="mb-4">
+        <mat-form-field class="w-full">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Enter your email"
+            formControlName="email"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="mb-6">
+        <mat-form-field class="w-full">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="Enter your password"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-[#ff4605] text-white text-base font-semibold rounded-lg py-2"
+      >
+        Login
+      </button>
+    </form>
+    <p class="text-[#2f3b48] text-base mt-4">
+      Don't have an account?
+      <a href="/admin/register" class="text-[#ff4605] underline">Sign Up</a>
+    </p>
+  </div>
+</div>

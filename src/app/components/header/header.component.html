@@ -1,0 +1,74 @@
+<div
+  [ngStyle]="{
+    'background-color': isScrolled ? '#ffffff' : bg,
+    color: isScrolled ? '#000000' : '#ffffff'
+  }"
+  class="fixed top-0 left-0 w-full z-10 transition-all"
+>
+  <div class="flex items-center justify-between h-16 px-7">
+    <a href="/" class="text-orange-600 font-bold text-lg">
+      Luxe<span
+        [ngStyle]="{
+          color: isScrolled ? '#000000' : '#ffffff'
+        }"
+        >drive</span
+      >
+    </a>
+    <nav
+      [ngClass]="{
+        'hidden md:flex': !open,
+        'flex flex-col space-y-4 bg-blue-500 text-white fixed inset-0': open
+      }"
+      class="md:flex space-x-6 gap-20 ml-20"
+    >
+      <a href="/" class="font-semibold">Home</a>
+      <a href="/allcars" class="font-semibold">All Cars</a>
+      <a href="#" class="font-semibold">Contact Us</a>
+      <a href="#" class="font-semibold">About Us</a>
+    </nav>
+    <div class="flex items-center space-x-2 ml-auto">
+      <mat-icon class="text-[#ff4605]">person_outline</mat-icon>
+      @if(isAuthenticated()){
+      <a (click)="logout()" class="cursor-pointer">Logout</a>
+      <div class="h-6 bg-[#50514f] w-px"></div>
+      <a>{{ getFullName() }}</a>
+      }@else {
+      <a href="/login">Log in</a>
+      <div class="h-6 bg-[#50514f] w-px"></div>
+      <a href="/register">Register</a>
+      }
+    </div>
+    <button (click)="open = !open" class="md:hidden ml-4">
+      <svg
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        class="h-6 w-6"
+        *ngIf="!open"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+    <button (click)="open = !open" class="absolute top-0 right-0 m-4 md:hidden">
+      <svg
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        class="h-6 w-6 text-white"
+        *ngIf="open"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        ></path>
+      </svg>
+    </button>
+  </div>
+</div>
